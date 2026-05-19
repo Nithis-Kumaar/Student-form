@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      color: #1f2937;
+    }
+    .page {
+      max-width: 1220px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      padding: 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .split-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 24px;
+      min-height: 460px;
+    }
+    .login-content {
+      display: grid;
+      gap: 18px;
+      max-width: 97%;
+    }
+    .login-image {
+      min-height: 420px;
+      border-radius: 12px;
+      background-image: url('https://i1.pickpik.com/photos/294/960/948/university-student-graduation-photo-hats-preview.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+      display: block;
+    }
+    #dashboard-card {
+      padding-top: 60px;
+    }
+    h1, h2 {
+      margin: 0 0 16px;
+    }
+    .form-group {
+      display: grid;
+      gap: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 12px 8px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 16px;
+    }
+    .input-with-icon {
+      width: 101%;
+      position: relative;
+      display: grid;
+    }
+    .input-with-icon input {
+      padding-right: 0px;
+    }
+    .input-with-icon button.eye-toggle {
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      border:black;
+      border-color: black;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      min-width: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-with-icon button.eye-toggle:hover {
+      background: rgba(37, 99, 235, 0.16);
+    }
+    button {
+      padding: 12px 12px;
+      width: auto;
+      margin: 0 auto;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #view-forms-btn,
+    #logout-btn {
+      position: absolute;
+      top: 18px;
+      width: auto;
+      padding: 12px 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #view-forms-btn {
+      right: 110px;
+      background: #2563eb;
+    }
+    #logout-btn {
+      right: 18px;
+      background: #ef4444;
+    }
+    #view-forms-btn:hover {
+      background: #1d4ed8;
+    }
+    #logout-btn:hover {
+      background: #dc2626;
+    }
+    .hidden {
+      display: none;
+    }
+    .radio-group {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .radio-item input[type="radio"] {
+      width: auto;
+    }
+    .radio-item label {
+      margin: 0;
+    }
+    .multiselect-dropdown {
+      position: relative;
+    }
+    .dropdown-button {
+      width: 98%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      background: white;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+    .dropdown-button::after {
+      content: '▾';
+      font-size: 14px;
+      color: #475569;
+    }
+    .dropdown-options {
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      padding: 12px;
+      margin-top: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .option-item:last-child {
+      border-bottom: none;
+    }
+    .option-item input[type="checkbox"] {
+      width: auto;
+    }
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checkbox-item input[type="checkbox"] {
+      width: auto;
+    }
+    .checkbox-item label {
+      margin: 0;
+    }
+    @media (max-width: 860px) {
+      .split-card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="dashboard-card" class="card">
+      <button id="logout-btn">Logout</button>
+      <button id="view-forms-btn">View Forms</button>
+      <h1>Student Form</h1>
+      <p id="welcome-text"></p>
+      <form id="student-form" class="form-group">
+        <label><strong>Name</strong></label>
+        <input type="text" id="form-name" placeholder="Full Name" required />
+        <label><strong>Register Number</strong></label>
+        <input type="text" id="form-register" placeholder="Register Number" required />
+        <label><strong>College Name</strong></label>
+        <input type="text" id="form-college" placeholder="College Name" required />
+        <label><strong>Course</strong></label>
+        <select id="form-department" class="dropdown-button">
+          <option value="">Select Course</option>
+          <option value="B.E">B.E</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="M.E">M.E</option>
+          <option value="M.Tech">M.Tech</option>
+          <option value="M.B.A">M.B.A</option>
+        </select>
+        <label><strong>Department</strong></label>
+        <input type="text" id="form-course" placeholder="Department Name" required />
+        <div>
+          <label><strong>Year of Study</strong></label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="year-1" name="year" value="1st Year" required />
+              <label for="year-1">1st Year</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="year-2" name="year" value="2nd Year" required />
+              <label for="year-2">2nd Year</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="year-3" name="year" value="3rd Year" required />
+              <label for="year-3">3rd Year</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="year-4" name="year" value="4th Year" required />
+              <label for="year-4">4th Year</label>
+            </div>
+          </div>
+        </div>
+        <label><strong>CGPA</strong></label>
+        <input type="number" id="form-cgpa" placeholder="CGPA" step="0.01" min="0" max="10" required />
+        <label><strong>Skills</strong></label>
+        <div class="multiselect-dropdown">
+          <details id="skills-dropdown">
+            <summary class="dropdown-button" id="skills-button">Select skills</summary>
+            <div class="dropdown-options" id="skills-menu">
+              <input type="text" id="skills-search" placeholder="Search skills..." style="width: 100%; padding: 5px; margin-bottom: 5px; box-sizing: border-box;">
+              <label class="option-item"><input type="checkbox" value="Programming" />Programming</label>
+              <label class="option-item"><input type="checkbox" value="Data Analysis" />Data Analysis</label>
+              <label class="option-item"><input type="checkbox" value="Design" />Design</label>
+              <label class="option-item"><input type="checkbox" value="Research" />Research</label>
+              <label class="option-item"><input type="checkbox" value="Leadership" />Leadership</label>
+              <label class="option-item"><input type="checkbox" value="Communication" />Communication</label>
+              <label class="option-item"><input type="checkbox" value="Project Management" />Project Management</label>
+            </div>
+          </details>
+        </div>
+        <div>
+          <label><strong>Areas of Interest</strong></label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-web" value="Web Development" />
+              <label for="interest-web">Web Development</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-mobile" value="Mobile Apps" />
+              <label for="interest-mobile">Mobile Apps</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-ai" value="AI/ML" />
+              <label for="interest-ai">AI/ML</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-cloud" value="Cloud Computing" />
+              <label for="interest-cloud">Cloud Computing</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-datascience" value="Data Science" />
+              <label for="interest-datascience">Data Science</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-cybersecurity" value="Cybersecurity" />
+              <label for="interest-cybersecurity">Cybersecurity</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-devops" value="DevOps" />
+              <label for="interest-devops">DevOps</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="interest-blockchain" value="Blockchain" />
+              <label for="interest-blockchain">Blockchain</label>
+            </div>
+          </div>
+          <div>
+            <p></p>
+            <label><strong>Upload Resume</strong></label>
+            <input type="file" id="form-resume" accept=".pdf,.doc,.docx" />
+          </div>
+        </div>
+        <button type="submit">Submit Form</button>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

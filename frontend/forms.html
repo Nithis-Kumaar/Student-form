@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submitted Forms</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      color: #1f2937;
+    }
+    .page {
+      max-width: 1300px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      padding: 24px;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .page-header h1 {
+      margin: 0 0 12px;
+    }
+    .page-header p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.6;
+    }
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .filters input,
+    .filters button {
+      padding: 12px 13.5px;
+      /* border-radius: 10px; */
+      border: 1px solid #cbd5e1;
+      font-size: 16px;
+      width: 95%;
+    }
+    .filters button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .filters button:hover {
+      background: #1d4ed8;
+    }
+    .creates button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 16px;
+      width: 100%;
+      
+    }
+    .creates button:hover {
+      background: #1d4ed8;
+    }
+    .page-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start; 
+      width: 100%;
+    }
+    .button-group {
+      display: flex;
+      gap: 12px;
+    }
+    #create-form-btn {
+      right: 10px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #logout-btn-forms {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      height: fit-content;
+    }
+    #logout-btn-forms:hover {
+      background: #dc2626;
+    }
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th,
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+    }
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+    .summary {
+      margin-bottom: 18px;
+      color: #475569;
+    }
+    .hidden {
+      display: none;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+      /* flex-wrap: wrap; */
+    }
+    .action-buttons button {
+      padding: 8px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      background: rgb(224, 15, 15);
+      color: white;
+      border-color: black;
+      transition: all 0.2s;
+    }
+    .action-buttons button:hover {
+      color: white;
+    }
+    .view-btn {
+      background: #3b82f6 !important;
+      color: white !important;
+      border-color: #3b82f6 !important;
+    }
+    .view-btn:hover {
+      background: #2563eb !important;
+    }
+    .edit-btn {
+      background: #10b981 !important;
+      color: white !important;
+      border-color: #10b981 !important;
+    }
+    .edit-btn:hover {
+      background: #059669 !important;
+    }
+    .delete-btn {
+      background: #ef4444 !important;
+      color: white !important;
+      border-color: #ef4444 !important;
+    }
+    .delete-btn:hover {
+      background: #dc2626 !important;
+    }
+    @media (max-width: 860px) {
+      .page-header {
+        flex-direction: column;
+      }
+      .filters {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="page-header-top">
+        <div>
+          <h1>Submitted Forms</h1>
+          <p>Browse all submitted student forms. Use the filters below to find a specific submission quickly.</p>
+        </div>
+        <div class="button-group">
+          <button id="create-form-btn" type="button">Create Form</button>
+          <button id="logout-btn-forms" type="button">Logout</button>
+        </div>
+      </div>
+      <div class="filters">
+        <input id="filter-name" type="text" placeholder="Search by Name" />
+        <input id="filter-register" type="text" placeholder="Search by Register Number" />
+        <input id="filter-college" type="text" placeholder="Search by College" />
+        <input id="filter-department" type="text" placeholder="Search by Department" />
+        <input id="filter-year" type="text" placeholder="Search by Year" />
+        <div class="creates">
+            <button id="clear-filters-btn" type="button">Clear Filters</button>
+        </div>
+      </div>
+      <div id="submissions-count" class="summary">Loading submissions...</div>
+      <div class="table-container">
+        <table id="submissions-table">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Name</th>
+              <th>Register No.</th>
+              <th>College</th>
+              <th>Course</th>
+              <th>Department</th>
+              <th>Year</th>
+              <th>CGPA</th>
+              <th>Skills</th>
+              <th>Interests</th>
+              <th>Resume</th>
+              <th>Submitted At</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p id="no-results" class="hidden">No matching forms found. Adjust your filter criteria or clear filters.</p>
+    </div>
+  </div>
+  <script src="forms.js"></script>
+</body>
+</html>

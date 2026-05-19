@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset Password</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      color: #1f2937;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+    .reset-image {
+      background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .reset-content {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+    p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.7;
+    }
+    .form-group {
+      display: grid;
+      gap: 18px;
+    }
+    label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 6px;
+    }
+    input {
+      width: 100%;
+      padding: 14px 12px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      font-size: 16px;
+    }
+    .input-with-icon {
+      position: relative;
+      width: 89%;
+      display: grid;
+    }
+    .input-with-icon input {
+      padding-right: 64px;
+    }
+    .input-with-icon button.eye-toggle {
+      position: absolute;
+      right: -70px;
+      top: 66%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      min-width: 42px;
+    }
+    .input-with-icon button.eye-toggle:hover {
+      background: rgba(37, 99, 235, 0.16);
+    }
+    button {
+      padding: 14px 16px;
+      border: none;
+      border-radius: 12px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      width: fit-content;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .message {
+      color: #059669;
+      font-weight: 600;
+      display: none;
+    }
+    .error {
+      color: #b91c1c;
+      font-weight: 600;
+      display: none;
+    }
+    @media (max-width: 860px) {
+      .card {
+        grid-template-columns: 1fr;
+      }
+      .reset-image {
+        min-height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="reset-image"></div>
+      <div class="reset-content">
+        <div>
+          <h1>Reset Password</h1>
+          <p>Enter your register number and a new password. After reset, use the new login credentials.</p>
+        </div>
+        <div id="message" class="message"></div>
+        <div id="error" class="error"></div>
+        <form id="reset-form" class="form-group">
+          <div>
+            <label for="reset-reg">Register Number</label>
+            <input id="reset-reg" type="text" placeholder="Your register number" required />
+          </div>
+          <div class="input-with-icon">
+            <label for="reset-password">New Password</label>
+            <input id="reset-password" type="password" placeholder="New password" required />
+            <button type="button" id="reset-password-toggle" class="eye-toggle" title="Show or hide password">◉_◉</button>
+          </div>
+          <div class="input-with-icon">
+            <label for="reset-confirm">Confirm Password</label>
+            <input id="reset-confirm" type="password" placeholder="Confirm password" required />
+            <button type="button" id="reset-confirm-toggle" class="eye-toggle" title="Show or hide password">◉_◉</button>
+          </div>
+          <button type="submit">Reset Password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="reset.js"></script>
+</body>
+</html>

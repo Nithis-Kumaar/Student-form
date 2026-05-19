@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Details</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      color: #1f2937;
+    }
+    .page {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      padding: 24px;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      gap: 20px;
+    }
+    .page-header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .button-group {
+      display: flex;
+      gap: 12px;
+    }
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    #back-btn {
+      background: #2563eb;
+      color: white;
+    }
+    #back-btn:hover {
+      background: #1d4ed8;
+    }
+    #logout-btn-details {
+      background: #ef4444;
+      color: white;
+    }
+    #logout-btn-details:hover {
+      background: #dc2626;
+    }
+    .details-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .detail-item {
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 4px solid #2563eb;
+    }
+    .detail-label {
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .detail-value {
+      color: #1f2937;
+      word-break: break-word;
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #475569;
+    }
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="page-header">
+        <h1>Form Details</h1>
+        <div class="button-group">
+          <button id="back-btn">← Back</button>
+          <button id="logout-btn-details">Logout</button>
+        </div>
+      </div>
+      <div id="error-message" class="error hidden"></div>
+      <div id="loading" class="loading">Loading form details...</div>
+      <div id="details-content" class="details-container hidden"></div>
+    </div>
+  </div>
+  <script src="view-details.js"></script>
+</body>
+</html>
