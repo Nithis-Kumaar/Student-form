@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      color: #1f2937;
+    }
+    .page {
+      max-width: 1220px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      padding: 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .split-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 24px;
+      min-height: 460px;
+    }
+    .login-content {
+      display: grid;
+      gap: 18px;
+      max-width: 97%;
+    }
+    .login-image {
+      min-height: 420px;
+      border-radius: 12px;
+      background-image: url('https://i1.pickpik.com/photos/294/960/948/university-student-graduation-photo-hats-preview.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+      display: block;
+    }
+    h1, h2 {
+      margin: 0 0 16px;
+    }
+    .form-group {
+      display: grid;
+      gap: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 12px 8px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 16px;
+    }
+    .input-with-icon {
+      width: 101%;
+      position: relative;
+      display: grid;
+    }
+    .input-with-icon input {
+      padding-right: 0px;
+    }
+    .input-with-icon button.eye-toggle {
+      width: 30%;
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      border:black;
+      border-color: black;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      min-width: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-with-icon button.eye-toggle:hover {
+      background: rgba(37, 99, 235, 0.16);
+    }
+    .forgot-link {
+      font-size: 14px;
+      color: #2563eb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+    button {
+      padding: 12px 12px;
+      width: auto;
+      margin: 0 auto;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #login-form button {
+      width: 30%;
+    }
+    button:hover {  
+      background: #1d4ed8;
+    }
+    .error {
+      color: #b91c1c;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    @media (max-width: 860px) {
+      .split-card {
+        grid-template-columns: 1fr;
+      }
+      .login-image {
+        min-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="login-card" class="card split-card">
+      <div class="login-content">
+        <div>
+          <h1>Login</h1>
+          <p>Enter your student credentials to access the form.</p>
+        </div>
+        <p id="error-msg" class="error hidden"></p>
+        <form id="login-form" class="form-group">
+          <input id="username" type="text" placeholder="Username" required />
+          <div class="input-with-icon">
+            <input id="password" type="password" placeholder="Password" required />
+            <button type="button" id="password-toggle" class="eye-toggle" title="Show or hide password">◉_◉</button>
+          </div>
+          <a class="forgot-link" id="forgot-password">Forgot password?</a>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      <div class="login-image"></div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

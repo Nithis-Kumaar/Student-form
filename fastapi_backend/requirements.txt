@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+aiofiles
+psycopg[binary]
+passlib
+cryptography

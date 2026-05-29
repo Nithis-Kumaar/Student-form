@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Preview</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #102a43;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 20px 32px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 28px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .header a {
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 700;
+    }
+    .preview-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 18px 0 0;
+    }
+    .preview-actions a,
+    .preview-actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      background: #2563eb;
+      text-decoration: none;
+    }
+    .preview-actions a.secondary,
+    .preview-actions button.secondary {
+      background: #64748b;
+    }
+    .content {
+      padding: 28px;
+      display: grid;
+      gap: 24px;
+    }
+    .file-box {
+      display: grid;
+      gap: 14px;
+    }
+    .file-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    .file-info span {
+      font-size: 16px;
+      color: #1e293b;
+      word-break: break-word;
+    }
+    .preview-frame {
+      width: 100%;
+      min-height: 760px;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    .preview-frame iframe,
+    .preview-frame object {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 64px 20px;
+      color: #334155;
+    }
+    .empty-state p {
+      margin: 12px 0 0;
+      color: #475569;
+    }
+    .info-block {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="header">
+        <div>
+          <h1>Resume Preview</h1>
+          <p class="info-block">Inspect the uploaded resume here, then download it if needed.</p>
+        </div>
+        <div class="preview-actions">
+          <a id="back-link" class="secondary" href="forms.html">Back to submissions</a>
+          <a id="download-link" class="" href="#" download>Download resume</a>
+        </div>
+      </div>
+      <div class="content">
+        <div class="file-box">
+          <div class="file-info">
+            <span id="file-name">Loading resume...</span>
+            <span id="file-type"></span>
+          </div>
+          <div class="preview-frame" id="preview-frame">
+            <div class="empty-state">
+              <p>Loading preview…</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="preview.js"></script>
+</body>
+</html>
